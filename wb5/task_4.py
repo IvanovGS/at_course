@@ -19,32 +19,13 @@ def scrabble(word):
     :param word: слово для подсчета очков
     :return: кол-во очков за все буквы
     """
-    points_1 = set('авеёинорст')
-    points_2 = set('дклмпу')
-    points_3 = set('бгьая')
-    points_4 = set('йы')
-    points_5 = set('жзхцч')
-    points_8 = set('фшэю')
-    points_10 = set('щ')
-    points_15 = set('ъ')
+
+    dict_points = dict([(1, 'авеёинорст'), (2, 'дклмпу'), (3, 'бгья'), (4, 'йы'), (5, 'жзхцч'), (8, 'фшэю'), (10, 'щ'), (15, 'ъ')])
     points = 0
     for i in word:
-        if i in points_1:
-            points += 1
-        elif i in points_2:
-            points += 2
-        elif i in points_3:
-            points += 3
-        elif i in points_4:
-            points += 4
-        elif i in points_5:
-            points += 5
-        elif i in points_8:
-            points += 8
-        elif i in points_10:
-            points += 10
-        elif i in points_15:
-            points += 15
+        for k, v in dict_points.items():
+            if i in v:
+                points += k
     return points
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

@@ -31,14 +31,13 @@ def everything_for_your_cat(cats_data):
     for cat in cats_data:
         cat_info = str(cat[0]) + ', ' + str(cat[1])
         name = str(cat[2] + ' ' + cat[3] + ': ')
-        if name in our_dict:
+        value = our_dict.setdefault(name, cat_info)
+        if value != cat_info:
             our_dict[name] += '; ' + cat_info
-        else:
-            our_dict.update({name: cat_info})
     our_str = ''
     for k, v in our_dict.items():
         our_str += k + v + '\n'
-    #print(our_str)
+
     return our_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
