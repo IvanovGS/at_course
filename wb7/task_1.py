@@ -18,7 +18,7 @@ class Segment:
         self.y2 = point2[1]
 
     def length(self):
-        return round((((max(self.x1, self.x2) - min(self.x1, self.x2)) ** 2) + ((max(self.y1, self.y2) - min(self.y1, self.y2)) ** 2)) ** 0.5, 2)
+        return round(((self.x1 - self.x2) ** 2 + (self.y1 -self.y2) ** 2) ** 0.5, 2)
 
     def x_axis_intersection(self):
         return self.x1 <= 0 and self.x2 >= 0 or self.x2 <= 0 and self.x1 >= 0
