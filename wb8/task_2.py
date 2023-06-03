@@ -18,29 +18,17 @@ import unittest  # Не удалять
 
 class Trigon:
 
-
     def __init__(self, *args):
-        self.sides = args
-
-    def triangle(self):
-        '''
-        функция обрабатывает неопределенное кол-во атрибутов и проверяет все требования соответствия треугольнику
-        :return:
-        какое требование треугольника не соблюдено
-        '''
-        if len(self.sides) != 3:
-            raise IndexError(f'Передано {len(self.sides)} аргументов, а ожидается 3')
-        try:
-            sum(self.sides)
-        except ValueError:
-            return 'Стороны должны быть числами'
-        try:
-            self.sides[0] < 1 or self.sides[1] < 1 or self.sides[2] < 1
-        except ValueError:
-            return 'Стороны должны быть положительными'
-        if not (self.sides[0] == self.sides[1] == self.sides[3] or self.sides[0] == self.sides[1] != self.sides[3]
-                or self.sides[0] == self.sides[3] != self.sides[1] or self.sides[1] == self.sides[3] != self.sides[0]):
-            return "Не треугольник"
+        if len(args) != 3:
+            raise IndexError(f'Передано {len(args)} аргументов, а ожидается 3')
+        for i in args:
+            if type(i) is not int:
+                raise TypeError('Стороны должны быть числами')
+            elif i < 1:
+                raise ValueError('Стороны должны быть положительными')
+        a, b, c = sorted(args)
+        if a + b <= c:
+            raise Exception('Не треугольник')
 # Здесь пишем код
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
